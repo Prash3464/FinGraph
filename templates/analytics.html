@@ -19,8 +19,8 @@
           <input type="month" id="analytics-month" name="month" value="{{ selected_month|default:now|date:'Y-m' }}">
           <select id="analytics-view-toggle" id="view-type"
             onchange="document.getElementById('analyticsForm').submit()">
-            <option value="daily" {% if selected_view=="daily" %}selected{% endif %}>Daily View</option>
-            <option value="monthly" {% if selected_view=="monthly" %}selected{%endif%}>Monthly View</option>
+            <option value="daily" {% if selected_view == "daily" %}selected{% endif %}>Daily View</option>
+            <option value="monthly" {% if selected_view == "monthly" %}selected{%endif%}>Monthly View</option>
             <!--            <option value="yearly" {% if selected_view == "yearly" %}selected{%endif%}>Yearly View</option>-->
           </select>
         </div>
