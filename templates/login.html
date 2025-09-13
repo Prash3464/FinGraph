@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login-contener">
+        <form action="" method="post" class="login">
+            {% csrf_token %}
+            <h1>Login</h1>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <label for="">Username</label>
+            <input type="text" id="username" placeholder="username or email" name="username_or_email" required>
+
+            <label for="">Password</label>
+            <input type="password" id="pass" placeholder="password" name="password" required>
+
+            <!-- Error messages will be displayed here -->
+            <div id="error-message" class="error-message"></div>
+
+
+            <!-- Use a button for the login -->
+            <button type="submit" class="btn">Login</button>
+            <div class="some-links">
+                <a href="{% url 'register' %}">
+                    <p class="register">Don't have an account? Register</p>
+                </a>
+                <a href="{% url 'reset_step1'%}">
+                    <p class="forgot-password">Forgot Password? </p>
+                </a>
+
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

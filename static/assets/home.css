@@ -1,0 +1,252 @@
+.home {
+  width: 100%;
+  min-height: 100%;
+  padding: 6rem 20px 4rem;
+  /* top, right/left, bottom */
+  background: #121212;
+  border-radius: 4px;
+  color: white;
+  overflow: auto;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 4fr;
+  gap: 10px;
+  height: auto;
+  /* important! */
+}
+
+/* Top Section */
+.top-controls {
+  grid-column: 1 / span 5;
+  background: #2d2d2d;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn {
+  background: #444;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 55px;
+  width: 163px;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background: #666;
+}
+
+/* Graph Section */
+.graph-section {
+  grid-column: 1 / span 3;
+  background: #3e3e3e;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.graph-placeholder {
+  flex-grow: 1;
+  background: #555;
+  border-radius: 4px;
+  margin-top: 10px;
+  min-height: 200px;
+  /* Optional */
+}
+
+
+/* Recent Expenses Section */
+.recent-expenses {
+  grid-column: 4 / span 2;
+  background: #3e3e3e;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.expense-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.expense-list li {
+  padding: 8px;
+  border-bottom: 1px solid #555;
+  display: flex;
+  justify-content: space-between;
+}
+
+.expense-list li span {
+  color: #ff0000c7;
+  font-weight: 600;
+}
+
+/* export windows*/
+/* Modal background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Hide modal initially */
+.modal.hidden {
+  display: none;
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 20px 25px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Headings */
+.modal-content h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Form elements */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#export-format {
+  height: 2rem;
+  margin: 1rem;
+
+  border: none;
+  border-radius: 4px;
+}
+
+.modal-content label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  flex-direction: row;
+}
+
+.modal-content .export_option {
+  margin-right: 8px;
+}
+
+.modal-content input[type="month"] {
+  margin-top: 5px;
+  padding: 8px;
+  background-color: #2b2b2b;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+}
+
+/* Buttons */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-actions .btn {
+  flex: 1;
+  padding: 10px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-actions .btn:hover {
+  background-color: #666;
+}
+
+.cancel-btn {
+  background-color: #d9534f;
+}
+
+.cancel-btn:hover {
+  background-color: #c9302c;
+}
+
+
+@media (max-width: 650px) {
+  .parent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn {
+
+    height: 33px;
+  }
+
+  .graph-section,
+  .recent-expenses {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .graph-section {
+    height: 50vh;
+    /* don’t fix, let grow based on graph */
+    /* order: 2; */
+  }
+
+  .home {
+    margin-top: 1rem;
+    padding-top: 5rem;
+    /* to avoid overlap with fixed nav */
+    padding-bottom: 5rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .modal-content h3 {
+    font-size: 1rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}

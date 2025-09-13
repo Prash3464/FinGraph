@@ -1,0 +1,52 @@
+<!-- add expences button  -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile - FinGraph{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'assets/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-main">
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>{{ user.username }}</h2>
+            <button id="editBtn" onclick="enableEdit()">Edit</button>
+            <button id="saveBtn" onclick="document.getElementById('profileForm').submit()"
+                style="display:none;">Save</button>
+        </div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form id="profileForm" method="post" action="">
+            {% csrf_token %}
+
+            <div class="profile-details">
+                <label>Username:</label>
+                <input type="text" name="username" value="{{ user.username }}" disabled>
+
+                <label>Email:</label>
+                <input type="email" name="email" value="{{ user.email }}" disabled>
+
+                <label>First Name:</label>
+                <input type="text" name="first_name" value="{{ user.first_name }}" disabled>
+
+                <label>Last Name:</label>
+                <input type="text" name="last_name" value="{{ user.last_name }}" disabled>
+
+                <label>Phone:</label>
+                <input type="text" name="phone" value="{{ profile.phone }}" disabled>
+                <!-- Adjust if using custom profile -->
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block add_scripts%}
+<script src="{% static 'assets/profile.js' %}"></script>
+{% endblock%}

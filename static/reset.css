@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(27, 27, 27);
+    font-family: sans-serif, monospace;
+}
+
+.login-contener {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login {
+    width: 27vw;
+    padding: 25px 15px;
+    border-radius: 5px;
+    box-shadow: 3px 1px 15px;
+    background: linear-gradient(135deg, #162938, rgb(16, 111, 134));
+    display: grid;
+    gap: 10px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 43px;
+}
+
+label {
+    font-size: 20px;
+    margin-left: 13px;
+}
+
+form #username,
+#pass,
+#cpass {
+    height: 35px;
+    margin: 0px 12px;
+    border-radius: 4px;
+    border: none;
+    padding-left: 8px;
+    background: #e3e3e3;
+    font-size: 16px;
+}
+
+.btn {
+    background: #162938;
+    border: none;
+    border-radius: 4px;
+    margin: 8px 12px;
+    font-size: 23px;
+    color: white;
+    height: 45px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+        width: 9vw;
+}
+
+p {
+    margin-left: 12px;
+    font-size: 12px;
+}
+
+p a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-right: 15px;
+        margin-top: -22px;
+}
+.button{
+    display: flex
+;
+    align-items: center;
+    justify-content: space-between;}
+@media (max-width: 1000px) {
+    .login {
+    width: 36vw;
+    }
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .login {
+        width: 90vw;
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    label {
+        font-size: 16px;
+        margin-left: 8px;
+    }
+
+    form #username,
+    #pass {
+        height: 32px;
+        margin: 6px 10px;
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 18px;
+        height: 40px;
+        margin: 10px;
+                width: 5rem;
+
+    }
+
+
+    p,
+    p a {
+        font-size: 11px;
+        margin-left: 10px;
+    }
+
+    .forgot-password {
+        margin-right: 10px;
+        font-size: 11px;
+    }
+
+    ul.messages li {
+        font-size: 13px;
+    }
+}
+
+
+/* Messages box */
+ul.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0 12px 15px 12px;
+}
+
+ul.messages li {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+ul.messages li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+ul.messages li.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}

@@ -1,0 +1,191 @@
+/* analytics.css */
+
+.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    width: 100%;
+    max-width: 100%;
+}
+
+.analytics-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+}
+
+/* -------- GRAPH SECTION -------- */
+
+.analytics-graph-section {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.graph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.graph-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.graph-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.graph-controls input,
+.graph-controls select {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* Plotly Chart */
+.chart-container {
+    width: 100%;
+    height: 400px;
+}
+
+/* -------- EXPENSE LIST SECTION -------- */
+
+.analytics-expense-list-section {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.list-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+#add-expense-btn {
+    font-size: 1.5rem;
+    padding: 5px 12px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-expense-btn:hover {
+    background-color: #0056b3;
+}
+
+.expenses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.expense-item {
+    background-color: #2a2a2a;
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.expense-main {
+    display: flex;
+    gap: 20px;
+    font-size: 0.95rem;
+    max-width: 80%;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.expense-title {
+    display: flex;
+}
+
+.expense-main .expense-amount {
+    color: #ff0000c7;
+    font-weight: 600;
+    width: 5%;
+}
+
+.expense-title {
+    width: 30%;
+}
+
+.expense-date {
+    width: 30%;
+}
+
+.expense-actions button {
+    color: #00bcd4;
+
+    margin-left: 10px;
+    background: transparent;
+    font-size: 15px;
+    border: none;
+}
+
+.expense-actions button:hover {
+    text-decoration: underline;
+}
+
+.no-expenses {
+    text-align: center;
+    color: #999;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 700px) {
+    .dark-theme {
+        padding: 0 0 .8rem 0;
+    }
+
+    .expense-actions button {
+        margin-top: 3rem;
+    }
+
+    .analytics-graph-section {
+        margin-top: 3rem;
+    }
+
+    .graph-header {
+        flex-direction: column;
+    }
+
+    .graph-controls {
+        flex-direction: column;
+        text-align: left;
+        align-items: self-start;
+        width: 100%;
+    }
+
+    .analytics-container {
+        padding: 2rem 0.8rem 0 .8rem;
+    }
+
+    .chart-container {
+        height: 295px;
+    }
+}

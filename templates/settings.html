@@ -1,0 +1,26 @@
+<!-- templates/settings.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Settings - FinGraph{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'assets/setting.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-container">
+    <h2>Settings</h2>
+
+    <!--Reset Password Section -->
+    <div class="setting-option">
+        <a href="{% url 'reset_step2' user.username %}" class="reset-btn">Reset Password</a>
+    </div>
+    <!-- Logout Button -->
+    <div class="setting-option">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

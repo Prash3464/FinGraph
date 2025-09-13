@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>{% block title %}FinGraph{% endblock %}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'resources/favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'resources/favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'resources/favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'resources/favicon_io/site.webmanifest' %}">
+    <link rel="shortcut icon" href="{% static 'resources/favicon_io/favicon.ico' %}" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'assets/base.css' %}">
+
+
+    {% block extra_css %}{% endblock %}
+
+</head>
+
+<body data-authenticated="{% if user.is_authenticated %}true{% else %}false{% endif %}"
+    data-login-url="{% url 'login' %}" data-register-url="{% url 'register' %}" data-username="{{ user.username }}">
+
+    <div class="mobile-view">
+        <img class="logo" src="{% static 'resources/favicon_icon.png' %}" alt="">
+        <h1 class="title-name">FinGraph</h1>
+    </div>
+
+    <div class="main">
+        <div class="nav">
+            <div class="app-title">
+                <img class="logo" src="{% static 'resources/favicon_icon.png' %}" alt="">
+                <h1 class="title-name">FinGraph</h1>
+            </div>
+
+
+
+            <div class="profile">
+                {% if user.is_authenticated %}
+                <p id="username" class="username">Hi, {{ user.username }}</p>
+                {% else %}
+                <p id="username1" class="username">
+                    <a href="{% url 'login' %}">Sign In</a> /
+                    <a href="{% url 'register' %}">Register</a>
+                </p>
+                {% endif %}
+            </div>
+            <!-- Login Prompt Modal -->
+            {% if not user.is_authenticated %}
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <h3>Please log in to continue</h3>
+                    <div class="modal-buttons">
+                        <a href="{% url 'login' %}" class="btn">Sign In</a>
+                        <a href="{% url 'register' %}" class="btn">Register</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <nav>
+                <ul>
+                    <li class="nav-link protected"><a href="{% url 'profile'%}"><img class="profile-img "
+                                src="{% static 'resources/user-icon-white.png' %}"
+                                alt="Profile Picture"><span>Profile</span></a></li>
+                    <li class="nav-link protected"><a href="{% url 'home' %}"><img
+                                src="{% static 'resources/home-logo-white.png' %}" alt=""><span>Home</span></a></li>
+                    <li class="nav-link protected"><a href="{% url 'analytics'%}"><img
+                                src="{% static 'resources/analytics-icon-white.png' %}"
+                                alt=""><span>Analytics</span></a></li>
+                    <li class="nav-link protected"><a href="{% url 'settings' %}"><img
+                                src="{% static 'resources/setting-icon-white.png' %}" alt=""><span>Settings</span></a>
+                    </li>
+                    <!--                    <li class="nav-link protected"><a href="#feedback"><img src="{% static 'resources/feedback-icon-white.png' %}"-->
+                    <!--                                alt=""><span>Feedback</span></a></li>-->
+                </ul>
+            </nav>
+        </div>
+        <div class="main-content">
+            <!-- expand main content -->
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+
+    <script src="{% static 'assets/scripts.js' %}"></script>
+
+
+    <!-- <script src="{% static 'assets/auth-model.js' %}"></script> -->
+    <!-- Plotly CDN -->
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+    <!-- Plotly CDN -->
+    <script src="{% static 'assets/graph.js' %}"></script>
+    {% block add_scripts%}
+    {%endblock%}
+
+</body>
+
+</html>

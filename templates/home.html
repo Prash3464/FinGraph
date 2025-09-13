@@ -1,0 +1,83 @@
+<!-- expand main content -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home - FinGraph{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'assets/home.css' %}">
+{% endblock %}
+
+
+
+<!-- home html code -->
+{% block content %}
+<div class="home">
+  <div class="parent">
+    <!-- Top Section -->
+    <div class="top-controls">
+      <button id="add-expense-btn" class="btn protected">Add Expense</button>
+      <button class="btn protected" onclick="window.location.href='{% url 'edit' %}'">Edit Expense</button>
+      <button id="export-trigger-btn" class="btn protected">Export Data</button>
+
+      <!-- Modal -->
+      <div id="export-modal" class="modal hidden">
+        <div class="modal-content">
+          <h3>Export Expenses</h3>
+
+          <form id="export-form" method="get" action="{% url 'export_expenses' %}">
+            <select id="export-format" name="format" required>
+              <option value="" disabled selected>Choose format</option>
+              <option value="csv">CSV</option>
+              <option value="excel">Excel</option>
+              <option value="pdf">PDF</option>
+            </select>
+
+            <label>
+              <input type="radio" name="export_option" value="all" class="export_option" checked>
+              Export All Data
+            </label>
+
+            <label>
+              <input type="radio" name="export_option" value="month" class="export_option">
+              Export Specific Month:
+            </label>
+            <input type="month" name="month" id="export-month-input" disabled>
+
+            <div class="modal-actions">
+              <button type="submit" class="btn">Download File</button>
+              <button type="button" class="btn cancel-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="graph-section">
+      <h3>Expenses Overview</h3>
+      <div id="home-expense-chart" class="graph-placeholder"></div>
+    </div>
+
+    <div class="recent-expenses">
+      <h3>Recent Expenses</h3>
+      {% if recent_expenses %}
+      <ul class="expense-list">
+        {% for expense in recent_expenses %}
+        <li>{{ expense.title }} <span> ₹{{ expense.amount }}</span></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<script>
+  const labels = {{ graph_labels| safe }};
+  const totals = {{ graph_totals| safe }};
+</script>
+{% endblock %}
+
+{% block add_scripts %}
+<script src="{% static 'assets/home.js' %}"></script>
+
+
+{% endblock %}

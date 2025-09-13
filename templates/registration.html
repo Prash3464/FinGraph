@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <link rel="stylesheet" href="{% static 'registration.css' %}">
+  <title>Register</title>
+</head>
+
+<body>
+  <div class="login-contener">
+    <form method="post" action="{% url 'register' %}" class="login">
+      {% csrf_token %}
+      <h1>Sign Up</h1>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <label for="name">Full Name</label>
+      <input type="text" name="full_name" id="name" placeholder="Full Name" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="Email" required>
+
+
+      <label for="password">Password</label>
+      <input type="password" name="password" id="pass" placeholder="Password" required>
+
+      <label for="cpass">Confirm Password</label>
+      <input type="password" name="confirm_password" id="cpass" placeholder="Confirm Password" required>
+
+      <div id="emailError" class="error-message"></div>
+      <div id="passwordError" class="error-message"></div>
+
+
+      <p class="shift-login">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+
+      <button type="submit" id="registBtn" class="btn">Register</button>
+    </form>
+  </div>
+</body>
+
+</html>
