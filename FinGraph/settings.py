@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-n@1sc2^g!z@0q)-0tp2kl@2gmk)52))f!g6ln%$90$-96ugsc0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fin-graph.onrender.com']
-
+ALLOWED_HOSTS = ['fingraph-avzp.onrender.com', 'fin-graph.onrender.com']
+# fin-graph.onrender.com
 # Application definition
 
 INSTALLED_APPS = [
