@@ -1,1 +1,1 @@
-web: gunicorn Fingraph.wsgi
+web: gunicorn FinGraph.wsgi
