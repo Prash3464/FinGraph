@@ -59,10 +59,6 @@ def add_expense_view(request):
         description = request.POST.get('description')
         payment_method = request.POST.get('method')
 
-        if not (title and category and amount and date and description):
-            messages.error(request, 'Please fill all fields')
-            return redirect(add_expense_view)
-
         try:
             amount = float(amount)
         except ValueError:
@@ -79,7 +75,6 @@ def add_expense_view(request):
             payment_method=payment_method,
         )
 
-        messages.success(request, 'Expense Added')
         return redirect(home_view)
 
 
@@ -222,6 +217,7 @@ def analytics_view(request):
     }
 
     return render(request, "analytics.html", context)
+
 @login_required
 def export_expenses(request):
     format = request.GET.get("format")
