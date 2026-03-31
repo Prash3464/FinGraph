@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 
 import dj_database_url
-from dj_database_url import Engine
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,7 +80,7 @@ WSGI_APPLICATION = 'FinGraph.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:F8fcD!2spjz_-pm@db.ogvrqqslygbuiaoiynmc.supabase.co:5432/postgres',
+        default=os.environ.get("DATABASE_URL"),
         conn_max_age=600,
         ssl_require=True
     )
