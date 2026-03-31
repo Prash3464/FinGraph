@@ -80,19 +80,11 @@ WSGI_APPLICATION = 'FinGraph.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'F8fcD!2spjz_-pm',
-        'HOST': 'db.ogvrqqslygbuiaoiynmc.supabase.co',
-        'PORT': '5432',
-        'OPTIONS': {
-            'sslmode': 'require',
-        }
-    }
-
-
+    'default': dj_database_url.config(
+        default='postgresql://postgres:F8fcD!2spjz_-pm@db.ogvrqqslygbuiaoiynmc.supabase.co:5432/postgres',
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 
