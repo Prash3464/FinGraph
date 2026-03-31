@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from dj_database_url import Engine
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-n@1sc2^g!z@0q)-0tp2kl@2gmk)52))f!g6ln%$90$-96ugsc0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fingraph-avzp.onrender.com', 'fin-graph.onrender.com']
+ALLOWED_HOSTS = ['*', 'fingraph-avzp.onrender.com', 'fin-graph.onrender.com']
 # fin-graph.onrender.com
 # Application definition
 
@@ -79,7 +80,19 @@ WSGI_APPLICATION = 'FinGraph.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'F8fcD!2spjz_-pm',
+        'HOST': 'db.ogvrqqslygbuiaoiynmc.supabase.co',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
+    }
+
+
 }
 
 
