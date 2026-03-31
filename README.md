@@ -45,12 +45,11 @@ A Django-based web application for visualizing financial data using interactive 
 6. Open in browser: `http://127.0.0.1:8000/`
    ```
 
-
-## Future Features
-- Light/Dark Mode
-- 2FA Authentication
+## Future Improvements
+- Add 2FA Authentication system
+- Improve UI/UX
+- Deploy with persistent database
 - Budget alerts
-
 
 ## Author
 **Prashant Pal**  
